@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5429/application_db
     username: indexzero
-    password: gkl370WVUPMgLhK
+    password: PASSWORD
     driver-class-name: org.postgresql.Driver
 
   h2:
