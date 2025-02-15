@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: NTO-Finals
+
+  datasource:
+    url: jdbc:postgresql://localhost:5429/application_db
+    username: indexzero
+    password: gkl370WVUPMgLhK
+    driver-class-name: org.postgresql.Driver
+
+  h2:
+    console:
+      enabled: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog-master.xml
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+server:
+  port: 8081
