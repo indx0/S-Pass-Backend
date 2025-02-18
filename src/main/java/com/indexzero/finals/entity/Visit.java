@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.apache.catalina.User;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Visit {
     private long id;
 
     @Column(name = "visit_time")
-    private Date visitTime;
+    private LocalDateTime visitTime;
 
     @Column(name = "type")
     private String type;
