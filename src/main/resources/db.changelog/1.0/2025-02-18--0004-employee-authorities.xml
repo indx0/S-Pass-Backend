@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2025-02-08--0004-employee-authorities" author="okalugin">
+        <preConditions>
+            <not>
+                <tableExists tableName="employee_authorities"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="employee_authorities">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_employeeauth_employee" referencedTableName="employee"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="authorities_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_employeeauth_authority" referencedTableName="authority"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

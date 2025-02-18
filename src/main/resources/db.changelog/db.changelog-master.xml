@@ -6,8 +6,14 @@
 
     <include file="db.changelog/1.0/2024-10-20--0001-code.xml"/>
     <include file="db.changelog/1.0/2024-10-20--0002-employee.xml"/>
+    <include file="db.changelog/1.0/2025-02-18--0003-authority.xml"/>
+    <include file="db.changelog/1.0/2025-02-18--0004-employee-authorities.xml"/>
+    <include file="db.changelog/1.0/2025-02-18--0005-employee-visits.xml"/>
 
     <include file="db.changelog/data/2024-10-20--0001-code-data.xml"/>
     <include file="db.changelog/data/2024-10-20--0002-employee-data.xml"/>
+    <include file="db.changelog/data/2025-02-18--0003-authority-data.xml"/>
+    <include file="db.changelog/data/2025-02-18--0004-employee-authorities-data.xml"/>
+    <include file="db.changelog/data/2025-02-18--0005-employee-visits-data.xml"/>
 
 </databaseChangeLog>
