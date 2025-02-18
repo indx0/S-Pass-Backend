@@ -1,7 +1,6 @@
 package com.indexzero.finals.service;
 
 import com.indexzero.finals.entity.Employee;
-import com.indexzero.finals.entity.OpenRequestBody;
 import org.springframework.http.ResponseEntity;
 
 public interface EmployeeService {

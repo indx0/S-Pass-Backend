@@ -1,7 +1,6 @@
 package com.indexzero.finals.service.impl;
 
 import com.indexzero.finals.entity.Employee;
-import com.indexzero.finals.entity.OpenRequestBody;
 import com.indexzero.finals.repository.CodeRepository;
 import com.indexzero.finals.repository.EmployeeRepository;
 import com.indexzero.finals.service.EmployeeService;
@@ -56,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     LocalDateTime time = LocalDateTime.now();
                     String formatted = time.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                     formatted = formatted.split("\\.")[0];
-                    employee.setLastVisit(LocalDateTime.parse(formatted));
+                    // employee.setLastVisit(LocalDateTime.parse(formatted));
 
                     employeeRepository.save(employee);
                     return new ResponseEntity<>(HttpStatus.OK);
