@@ -3,9 +3,9 @@ spring:
     name: NTO-Finals
 
   datasource:
-    url: jdbc:postgresql://localhost:5429/application_db
+    url: jdbc:postgresql://localhost:5430/application_db
     username: indexzero
-    password: PASSWORD
+    password: gkl370WVUPMgLhK
     driver-class-name: org.postgresql.Driver
 
   h2:

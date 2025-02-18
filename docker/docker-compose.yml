@@ -1,18 +1,18 @@
 services:
-  app:
-    build:
-      context: ../
-      dockerfile: ./docker/Dockerfile
-    container_name: app
-    depends_on:
-      - postgres_nto
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_nto:5432/application_db
-      - SPRING_DATASOURCE_USERNAME=$USERNAME
-      - SPRING_DATASOURCE_PASSWORD=$PASSWORD
-
-    ports:
-      - "8081:8081"
+#  app:
+#    build:
+#      context: ../
+#      dockerfile: ./docker/Dockerfile
+#    container_name: app
+#    depends_on:
+#      - postgres_nto
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_nto:5432/application_db
+#      - SPRING_DATASOURCE_USERNAME=$USERNAME
+#      - SPRING_DATASOURCE_PASSWORD=$PASSWORD
+#
+#    ports:
+#      - "8081:8081"
 
   postgres_nto:
     image: postgres:latest
@@ -23,7 +23,7 @@ services:
       POSTGRES_DB: application_db
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - "5429:5432"
+      - "5430:5432"
     volumes:
       - postgres_nto_data:/var/lib/postgresql/data/pgdata
     restart: unless-stopped
