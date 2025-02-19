@@ -21,7 +21,7 @@ public class EntranceController {
 
 
     @GetMapping
-    @Operation(description = "Get all entrances of a user with pagination. Username is taken from Authentication", summary = "Get all entrances of a user")
+    @Operation(description = "Get all entries of a user with pagination. Username is taken from Authentication", summary = "Get all entries of a user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request Successful."),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
@@ -30,8 +30,9 @@ public class EntranceController {
         Pageable pageable = PageRequest.of(page, size);
         return entranceService.getEmployeeEntrances(pageable, SecurityContextHolder.getContext().getAuthentication());
     }
+
     @GetMapping("/last")
-    @Operation(description = "Get user's last entrance. Username is taken from Authentication", summary = "Get user's last entrance")
+    @Operation(description = "Get user's last entries. Username is taken from Authentication", summary = "Get user's last entry")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request Successful."),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
@@ -41,7 +42,7 @@ public class EntranceController {
     }
 
     @GetMapping("/all")
-    @Operation(description = "Get all entrances of all users with pagination (ADMIN only)", summary = "Get all entrances")
+    @Operation(description = "Get all entries of all users with pagination (ADMIN only)", summary = "Get all entries")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request Successful."),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
@@ -50,6 +51,19 @@ public class EntranceController {
     public ResponseEntity<Page<EntranceDTO>> getAllEntrances(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return entranceService.getAllEntrances(pageable);
+    }
+
+    @GetMapping("/{login}")
+    @Operation(description = "Get all entries of a user by login (ADMIN only)", summary = "Get entries by login")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Request Successful."),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+    })
+    public ResponseEntity<Page<EntranceDTO>> getEntrancesByLogin (@PathVariable String login, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return entranceService.getEntrancesByLogin(pageable, login);
     }
 
 }
