@@ -17,12 +17,12 @@ public class Code {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "value")
+    @Column(name = "value", nullable = false)
     private long value;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     String name;
 
-    @Column(name = "entry_type")
+    @Column(name = "entry_type", nullable = false)
     String entryType;
 }

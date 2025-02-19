@@ -33,10 +33,10 @@ public class Employee implements UserDetails {
     @Column(name = "position", nullable = false)
     private String position;
 
-    @Column(name = "photo_url")
+    @Column(name = "photo_url", nullable = false)
     private String photoUrl;
 
-    @Column(name = "is_enabled")
+    @Column(name = "is_enabled", nullable = false)
     Boolean isQREnabled;
 
     @ManyToMany(fetch = FetchType.EAGER)

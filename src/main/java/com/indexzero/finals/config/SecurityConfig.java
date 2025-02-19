@@ -27,17 +27,27 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
+                        // Swagger and OpenAPI Docs
                         .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+
+                        // EmployeeController for everyone
                         .requestMatchers("/api/employee/login").authenticated()
                         .requestMatchers("/api/employee/profile").authenticated()
                         .requestMatchers("/api/employee/open").authenticated()
-                        .requestMatchers("/api/entrance").authenticated()
-                        .requestMatchers("/api/entrance/all").hasAuthority("ADMIN")
+                        // EmployeeController for admins
                         .requestMatchers("/api/employee/{login}/delete").hasAuthority("ADMIN")
                         .requestMatchers("/api/employee/{login}/{state}").hasAuthority("ADMIN")
-                        .requestMatchers("/api/employee/all").hasAuthority("ADMIN")
                         .requestMatchers("/api/employee/{login}").hasAuthority("ADMIN")
-                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/api/employee/all").hasAuthority("ADMIN")
+
+                        // Entrance for everyone
+                        .requestMatchers("/api/entrance").authenticated()
+                        .requestMatchers("/api/entrance/last").authenticated()
+                        // Entrance for admins
+                        .requestMatchers("/api/entrance/all").hasAuthority("ADMIN")
+                        .requestMatchers("/api/entrance/{login}").hasAuthority("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults()).csrf(csrf -> csrf

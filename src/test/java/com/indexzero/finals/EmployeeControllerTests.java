@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class NtoFinalsApplicationTests {
+class EmployeeControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,5 +28,16 @@ class NtoFinalsApplicationTests {
                 .andExpect(status().isOk()
         );
     }
+
+    @Test
+    void userLoginWrong() throws Exception {
+        this.mockMvc.perform(
+                        post("/api/employee/login")
+                                .with(httpBasic("pivanov", "HelloWorld12345")))
+                .andDo(print())
+                .andExpect(status().isUnauthorized());
+    }
+
+
 
 }
