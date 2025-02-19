@@ -20,10 +20,6 @@ public class Entrance {
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
-//    @OneToOne
-//    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-//    private Employee employee;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reader", referencedColumnName = "id")
     private Code reader;
