@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -38,14 +36,22 @@ public class Employee implements UserDetails {
     @Column(name = "photo_url")
     private String photoUrl;
 
+    @Column(name = "is_enabled")
+    Boolean isEmpEnabled;
+
     @ManyToMany(fetch = FetchType.EAGER)
     Set<Authority> authorities;
 
-    @OneToMany(mappedBy = "id")
-    List<Visit> visits;
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    List<Entrance> entrances;
 
     @Override
     public String getUsername() {
         return this.login;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEmpEnabled;
     }
 }

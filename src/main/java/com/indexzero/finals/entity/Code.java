@@ -20,6 +20,6 @@ public class Code {
     @Column(name = "value")
     private long value;
 
-    @Column(name = "is_active")
-    boolean isActive;
+    @Column(name = "name")
+    String name;
 }

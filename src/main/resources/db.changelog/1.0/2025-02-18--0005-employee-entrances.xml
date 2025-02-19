@@ -5,19 +5,19 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="2025-02-18--0005-visits" author="okalugin">
+    <changeSet id="2025-02-19--0005-employee-entrances-02" author="okalugin">
         <preConditions>
             <not>
-                <tableExists tableName="employee_visits"/>
+                <tableExists tableName="employee_entrances"/>
             </not>
         </preConditions>
 
-        <createTable tableName="employee_visits">
+        <createTable tableName="employee_entrances">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="user_id" type="BIGINT">
+            <column name="employee_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="fk_employeeauth_employee" referencedTableName="employee"
                              referencedColumnNames="id"/>
             </column>

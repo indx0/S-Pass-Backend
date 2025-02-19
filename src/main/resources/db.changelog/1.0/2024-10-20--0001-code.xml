@@ -23,7 +23,8 @@
             <column name="value" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="is_active" type="bool">
+
+            <column name="name" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

@@ -38,6 +38,10 @@
             </column>
 
             <column name="photo_url" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_enabled" type="bool">
                 <constraints nullable="false"/>
             </column>
 
