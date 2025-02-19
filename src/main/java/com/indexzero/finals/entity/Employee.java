@@ -42,7 +42,7 @@ public class Employee implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     Set<Authority> authorities;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     List<Entrance> entrances;
 
     @Override

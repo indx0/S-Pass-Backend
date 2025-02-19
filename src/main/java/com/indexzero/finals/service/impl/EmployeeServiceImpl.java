@@ -9,6 +9,8 @@ import com.indexzero.finals.repository.EntranceRepository;
 import com.indexzero.finals.service.EmployeeService;
 import com.indexzero.finals.util.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
+
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -122,8 +123,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
-        return new ResponseEntity<>(employeeRepository.findAll().stream().map(EmployeeMapper::convertToDTO).collect(Collectors.toList()), HttpStatus.OK);
+    public ResponseEntity<Page<EmployeeDTO>> getAllEmployees(Pageable pageable) {
+        return new ResponseEntity<>(employeeRepository.findAll(pageable).map(EmployeeMapper::convertToDTO), HttpStatus.OK);
     }
 
     @Override
