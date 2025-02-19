@@ -118,6 +118,24 @@ class EmployeeControllerTests {
                 .andExpect(status().isForbidden());
     }
 
+    @Test
+    void getByLogin() throws Exception {
+        this.mockMvc.perform(
+                        get("/api/employee/pivanov")
+                                .with(httpBasic("pivanov", "HelloWorld1234")))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void getByLoginForbidden() throws Exception {
+        this.mockMvc.perform(
+                        get("/api/employee/pivanov")
+                                .with(httpBasic("afedorov", "HelloWorld1234")))
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
+
 
 
 }
