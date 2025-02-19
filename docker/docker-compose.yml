@@ -1,18 +1,18 @@
 services:
-#  app:
-#    build:
-#      context: ../
-#      dockerfile: ./docker/Dockerfile
-#    container_name: app
-#    depends_on:
-#      - postgres_nto
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_nto:5432/application_db
-#      - SPRING_DATASOURCE_USERNAME=$USERNAME
-#      - SPRING_DATASOURCE_PASSWORD=$PASSWORD
-#
-#    ports:
-#      - "8081:8081"
+  app:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: app
+    depends_on:
+      - postgres_nto
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_nto:5432/application_db
+      - SPRING_DATASOURCE_USERNAME=indexzero
+      - SPRING_DATASOURCE_PASSWORD=gkl370WVUPMgLhK
+
+    ports:
+      - "8081:8080"
 
   postgres_nto:
     image: postgres:latest

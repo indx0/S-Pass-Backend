@@ -13,6 +13,7 @@ public class EntranceMapper {
         entranceDTO.setEmployeeLogin(entrance.getEmployee().getLogin());
         entranceDTO.setEntryTime(entrance.getVisitTime());
         entranceDTO.setReaderName(entrance.getReader().getName());
+        entranceDTO.setEntryType(entrance.getReader().getEntryType());
         entranceDTO.setType(entrance.getType());
 
         return entranceDTO;

@@ -22,4 +22,7 @@ public class Code {
 
     @Column(name = "name")
     String name;
+
+    @Column(name = "entry_type")
+    String entryType;
 }

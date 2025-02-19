@@ -3,6 +3,7 @@ spring:
     name: NTO-Finals
 
   datasource:
+    # INFO: Comment url, username and password for usage with docker
     url: jdbc:postgresql://localhost:5432/application_db
     username: indexzero
     password: gkl370WVUPMgLhK

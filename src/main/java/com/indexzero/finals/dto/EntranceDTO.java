@@ -11,4 +11,5 @@ public class EntranceDTO {
     private LocalDateTime entryTime;
     private String readerName;
     private String type;
+    private String entryType;
 }
