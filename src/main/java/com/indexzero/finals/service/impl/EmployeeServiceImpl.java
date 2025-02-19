@@ -41,17 +41,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             if (codeRepository.existsByValue(Long.valueOf(code))) {
                 Employee employee = employeeRepository.findByLogin(auth.getName());
-                Entrance entrance = new Entrance();
+                if(employee.getIsQREnabled()) {
+                    Entrance entrance = new Entrance();
 
-                entrance.setVisitTime(LocalDateTime.now());
-                entrance.setReader(codeRepository.findByValue(code));
-                entrance.setType("smartphone");
-                entrance.setEmployee(employee);
+                    entrance.setVisitTime(LocalDateTime.now());
+                    entrance.setReader(codeRepository.findByValue(code));
+                    entrance.setType("smartphone");
+                    entrance.setEmployee(employee);
 
-                entranceRepository.save(entrance);
+                    entranceRepository.save(entrance);
 
 
-                return new ResponseEntity<>(HttpStatus.OK);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                }
+                else {
+                    return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+                }
             }
             else {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

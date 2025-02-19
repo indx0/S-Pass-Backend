@@ -32,7 +32,7 @@ public class EntranceServiceImpl implements EntranceService {
     public ResponseEntity<Page<EntranceDTO>> getEmployeeEntrances(Pageable pageable, Authentication auth) {
         Employee employee = employeeRepository.findByLogin(auth.getName());
         System.out.println(employee.getEntrances().stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList()));
-        List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());
+        List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList()).reversed();
         Page<EntranceDTO> page = new PageImpl<>(entrances, pageable, entrances.size());
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
@@ -40,7 +40,7 @@ public class EntranceServiceImpl implements EntranceService {
     @Override
     public ResponseEntity<EntranceDTO> getLastEntrance(Authentication auth) {
         Employee employee = employeeRepository.findByLogin(auth.getName());
-        List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());
+        List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).toList();
         System.out.println(entrances.getLast());
         return new ResponseEntity<>(entrances.getLast(), HttpStatus.OK);
     }
@@ -48,7 +48,7 @@ public class EntranceServiceImpl implements EntranceService {
     @Override
     public ResponseEntity<Page<EntranceDTO>> getAllEntrances(Pageable pageable) {
         List<Entrance> entrances = entranceRepository.findAll();
-        List<EntranceDTO> entrancesdto = entrances.stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());
+        List<EntranceDTO> entrancesdto = entrances.stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList()).reversed();
 
         Page<EntranceDTO> page = new PageImpl<>(entrancesdto, pageable, entrances.size());
         return new ResponseEntity<>(page, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class EntranceServiceImpl implements EntranceService {
         Employee e = employeeRepository.findByLogin(login);
         if(e != null) {
             List<Entrance> entrances = e.getEntrances();
-            List<EntranceDTO> entrancesdto = entrances.stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());
+            List<EntranceDTO> entrancesdto = entrances.stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList()).reversed();
 
             Page<EntranceDTO> page = new PageImpl<>(entrancesdto, pageable, entrances.size());
 
