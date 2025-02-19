@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="2024-10-20--0001-code-03" author="anepretimov">
+    <changeSet id="2024-10-20--0001-code-03" author="okalugin">
 
         <preConditions onFail="MARK_RAN">
             <not>
