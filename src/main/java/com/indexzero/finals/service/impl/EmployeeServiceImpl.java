@@ -31,19 +31,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EntranceRepository entranceRepository;
 
-    public ResponseEntity<Object> checkIfUserExists(String login) {
-        try {
-            if(employeeRepository.existsByLogin(login)) {
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-            else {
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-            }
-        }
-        catch(Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 
     @Override
     public ResponseEntity<EmployeeDTO> getUserInfo(Authentication auth) {
