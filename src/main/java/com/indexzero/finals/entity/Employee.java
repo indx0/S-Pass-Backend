@@ -37,7 +37,7 @@ public class Employee implements UserDetails {
     private String photoUrl;
 
     @Column(name = "is_enabled")
-    Boolean isEmpEnabled;
+    Boolean isQREnabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     Set<Authority> authorities;
@@ -50,8 +50,4 @@ public class Employee implements UserDetails {
         return this.login;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return isEmpEnabled;
-    }
 }

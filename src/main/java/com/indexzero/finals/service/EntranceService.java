@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 
 public interface EntranceService {
     ResponseEntity<Page<EntranceDTO>> getEmployeeEntrances(Pageable pageable, Authentication auth);
+    ResponseEntity<EntranceDTO> getLastEntrance(Authentication auth);
     ResponseEntity<Page<EntranceDTO>> getAllEntrances(Pageable pageable);
+
 
 }

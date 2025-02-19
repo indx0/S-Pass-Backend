@@ -38,6 +38,14 @@ public class EntranceServiceImpl implements EntranceService {
     }
 
     @Override
+    public ResponseEntity<EntranceDTO> getLastEntrance(Authentication auth) {
+        Employee employee = employeeRepository.findByLogin(auth.getName());
+        List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());
+        System.out.println(entrances.getLast());
+        return new ResponseEntity<>(entrances.getLast(), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<Page<EntranceDTO>> getAllEntrances(Pageable pageable) {
         List<Entrance> entrances = entranceRepository.findAll();
         List<EntranceDTO> entrancesdto = entrances.stream().map(EntranceMapper::convertToDTO).collect(Collectors.toList());

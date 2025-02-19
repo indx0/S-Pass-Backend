@@ -50,7 +50,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                 entranceRepository.save(entrance);
 
-                // employeeRepository.save(employee);
 
                 return new ResponseEntity<>(HttpStatus.OK);
             }
@@ -90,12 +89,12 @@ public class EmployeeServiceImpl implements EmployeeService {
             }
             else {
                 if(state.equals("active")) {
-                    e.setIsEmpEnabled(true);
+                    e.setIsQREnabled(true);
                     employeeRepository.save(e);
                     return new ResponseEntity<>(HttpStatus.OK);
                 }
                 else if(state.equals("blocked")) {
-                    e.setIsEmpEnabled(false);
+                    e.setIsQREnabled(false);
                     employeeRepository.save(e);
                     return new ResponseEntity<>(HttpStatus.OK);
                 }

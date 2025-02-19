@@ -2,6 +2,9 @@ package com.indexzero.finals.controller;
 
 import com.indexzero.finals.dto.EntranceDTO;
 import com.indexzero.finals.service.EntranceService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,12 +21,32 @@ public class EntranceController {
 
 
     @GetMapping
+    @Operation(description = "Get all entrances of a user with pagination. Username is taken from Authentication", summary = "Get all entrances of a user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Request Successful."),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+    })
     public ResponseEntity<Page<EntranceDTO>> getEntrances(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return entranceService.getEmployeeEntrances(pageable, SecurityContextHolder.getContext().getAuthentication());
     }
+    @GetMapping("/last")
+    @Operation(description = "Get user's last entrance. Username is taken from Authentication", summary = "Get user's last entrance")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Request Successful."),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+    })
+    public ResponseEntity<EntranceDTO> getLastEntrance() {
+        return entranceService.getLastEntrance(SecurityContextHolder.getContext().getAuthentication());
+    }
 
     @GetMapping("/all")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Request Successful."),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+    })
+    @Operation(description = "Get all entrances of all users (ADMIN only)", summary = "Get all entrances")
     public ResponseEntity<Page<EntranceDTO>> getAllEntrances(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return entranceService.getAllEntrances(pageable);

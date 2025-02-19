@@ -14,6 +14,7 @@ public class EmployeeMapper {
         employeeDTO.setName(user.getName());
         employeeDTO.setPosition(user.getPosition());
         employeeDTO.setPhotoUrl(user.getPhotoUrl());
+        employeeDTO.setQREnabled(user.getIsQREnabled());
         return employeeDTO;
     }
 }
