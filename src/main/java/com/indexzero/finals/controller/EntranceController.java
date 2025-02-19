@@ -41,12 +41,12 @@ public class EntranceController {
     }
 
     @GetMapping("/all")
+    @Operation(description = "Get all entrances of all users with pagination (ADMIN only)", summary = "Get all entrances")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request Successful."),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "403", description = "Forbidden"),
     })
-    @Operation(description = "Get all entrances of all users (ADMIN only)", summary = "Get all entrances")
     public ResponseEntity<Page<EntranceDTO>> getAllEntrances(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return entranceService.getAllEntrances(pageable);
