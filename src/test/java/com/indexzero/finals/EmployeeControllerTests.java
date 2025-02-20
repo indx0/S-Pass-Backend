@@ -42,7 +42,7 @@ class EmployeeControllerTests {
     void doorOpen() throws Exception {
         this.mockMvc.perform(
                         patch("/api/employee/open")
-                                .param("code", "1234567890123456789")
+                                .param("code", "820962709643279872")
                                 .with(httpBasic("pivanov", "HelloWorld1234")))
                 .andDo(print())
                 .andExpect(status().isOk());
