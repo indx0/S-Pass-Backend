@@ -86,26 +86,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<HttpStatusCode> changeState(String login, String state) {
+    public ResponseEntity<HttpStatusCode> changeState(String login) {
         Employee e = employeeRepository.findByLogin(login);
         if(e != null) {
             if (Objects.equals(e.getAuthorities().iterator().next().getAuthority(), "ADMIN")) {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             else {
-                if(state.equals("active")) {
-                    e.setIsQREnabled(true);
-                    employeeRepository.save(e);
-                    return new ResponseEntity<>(HttpStatus.OK);
-                }
-                else if(state.equals("blocked")) {
-                    e.setIsQREnabled(false);
-                    employeeRepository.save(e);
-                    return new ResponseEntity<>(HttpStatus.OK);
-                }
-                else {
-                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-                }
+                e.setIsQREnabled(!e.getIsQREnabled());
+                employeeRepository.save(e);
+                return new ResponseEntity<>(HttpStatus.OK);
             }
         }
         else {

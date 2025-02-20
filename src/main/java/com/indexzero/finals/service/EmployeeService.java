@@ -13,7 +13,7 @@ public interface EmployeeService {
     ResponseEntity<EmployeeDTO> getUserInfo(Authentication auth);
     ResponseEntity<Object> openTheDoor(Long code, Authentication auth);
     ResponseEntity<HttpStatusCode> deleteEmployee(String login);
-    ResponseEntity<HttpStatusCode> changeState(String login, String state);
+    ResponseEntity<HttpStatusCode> changeState(String login);
     ResponseEntity<Page<EmployeeDTO>> getAllEmployees(Pageable pageable);
     ResponseEntity<EmployeeDTO> getEmployeeByLogin(String login);
     ResponseEntity<EmployeeDTO> updateEmployee(EmployeeDTO updateDTO, String login);
