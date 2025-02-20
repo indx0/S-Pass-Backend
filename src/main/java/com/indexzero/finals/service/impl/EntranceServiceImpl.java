@@ -41,8 +41,12 @@ public class EntranceServiceImpl implements EntranceService {
     public ResponseEntity<EntranceDTO> getLastEntrance(Authentication auth) {
         Employee employee = employeeRepository.findByLogin(auth.getName());
         List<EntranceDTO> entrances = employee.getEntrances().stream().map(EntranceMapper::convertToDTO).toList();
-        System.out.println(entrances.getLast());
-        return new ResponseEntity<>(entrances.getLast(), HttpStatus.OK);
+        if(entrances.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        else {
+            return new ResponseEntity<>(entrances.getLast(), HttpStatus.OK);
+        }
     }
 
     @Override

@@ -35,6 +35,7 @@ public class EntranceController {
     @Operation(description = "Get user's last entries. Username is taken from Authentication", summary = "Get user's last entry")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request Successful."),
+            @ApiResponse(responseCode = "204", description = "No Entrances."),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
     })
     public ResponseEntity<EntranceDTO> getLastEntrance() {
