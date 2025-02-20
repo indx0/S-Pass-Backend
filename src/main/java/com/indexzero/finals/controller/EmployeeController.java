@@ -30,7 +30,7 @@ public class EmployeeController {
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
     })
     public ResponseEntity<Object> login() {
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/profile")
@@ -96,13 +96,25 @@ public class EmployeeController {
     @GetMapping("/{login}")
     @Operation(description = "Get user's profile by login (ADMIN only)", summary = "Get user's profile by login")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Modification Successful"),
+            @ApiResponse(responseCode = "200", description = "Request Successful"),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "403", description = "Forbidden"),
             @ApiResponse(responseCode = "404", description = "User not found"),
     })
     public ResponseEntity<EmployeeDTO> getEmployeeByLogin(@PathVariable String login) {
         return employeeService.getEmployeeByLogin(login);
+    }
+
+    @PatchMapping("/{login}/update")
+    @Operation(description = "Update user's profile (ADMIN only). Accepts name, position and photo_url properties", summary = "Update user's profile")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Modification Successful"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "404", description = "User not found"),
+    })
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable String login, @RequestBody EmployeeDTO updateDTO) {
+        return employeeService.updateEmployee(updateDTO, login);
     }
 
 }

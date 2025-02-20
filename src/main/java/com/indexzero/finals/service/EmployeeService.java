@@ -16,4 +16,5 @@ public interface EmployeeService {
     ResponseEntity<HttpStatusCode> changeState(String login, String state);
     ResponseEntity<Page<EmployeeDTO>> getAllEmployees(Pageable pageable);
     ResponseEntity<EmployeeDTO> getEmployeeByLogin(String login);
+    ResponseEntity<EmployeeDTO> updateEmployee(EmployeeDTO updateDTO, String login);
 }

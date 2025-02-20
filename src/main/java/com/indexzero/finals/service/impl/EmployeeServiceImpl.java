@@ -128,4 +128,25 @@ public class EmployeeServiceImpl implements EmployeeService {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @Override
+    public ResponseEntity<EmployeeDTO> updateEmployee(EmployeeDTO updateDTO, String login) {
+        Employee e = employeeRepository.findByLogin(login);
+        if(e != null) {
+            if(updateDTO.getName() != null) {
+                e.setName(updateDTO.getName());
+            }
+            if (updateDTO.getPosition() != null) {
+                e.setPosition(updateDTO.getPosition());
+            }
+            if (updateDTO.getPhotoUrl() != null) {
+                e.setPhotoUrl(updateDTO.getPhotoUrl());
+            }
+            employeeRepository.save(e);
+            return new ResponseEntity<>(EmployeeMapper.convertToDTO(e), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="2024-10-20--0002-employee" author="okalugin">
+    <changeSet id="2024-10-20--0002-employee-02" author="okalugin">
 
         <preConditions onFail="MARK_RAN">
             <not>
@@ -37,7 +37,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="photo_url" type="VARCHAR(100)">
+            <column name="photo_url" type="VARCHAR(250)">
                 <constraints nullable="true"/>
             </column>
 
