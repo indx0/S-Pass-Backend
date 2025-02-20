@@ -112,7 +112,7 @@ public class EmployeeController {
     })
 
     public ResponseEntity<String> coffee() {
-        return new ResponseEntity<>("I Am A Teapot", HttpStatus.I_AM_A_TEAPOT);
+        return new ResponseEntity<>("<center><h1>I Am A Teapot</h1></center>", HttpStatus.I_AM_A_TEAPOT);
     }
 
 }
