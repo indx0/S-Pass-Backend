@@ -90,7 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee e = employeeRepository.findByLogin(login);
         if(e != null) {
             if (Objects.equals(e.getAuthorities().iterator().next().getAuthority(), "ADMIN")) {
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
             }
             else {
                 e.setIsQREnabled(!e.getIsQREnabled());

@@ -72,10 +72,10 @@ public class EmployeeController {
     @Operation(description = "Enable/Disable user's ability to use QR code entrance. (ADMIN only)", summary = "Enable/Disable QR")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Modification Successful"),
+            @ApiResponse(responseCode = "412", description = "User you're trying to block has ADMIN privileges"),
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "403", description = "Forbidden"),
             @ApiResponse(responseCode = "404", description = "User not found"),
-            @ApiResponse(responseCode = "400", description = "State doesn't exist"),
     })
     public ResponseEntity<HttpStatusCode> changeState(@PathVariable String login) {
         return employeeService.changeState(login);
