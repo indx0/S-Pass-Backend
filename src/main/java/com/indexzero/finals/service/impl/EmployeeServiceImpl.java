@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public ResponseEntity<Object> openTheDoor(Long code, Authentication auth) {
         try {
-            if (codeRepository.existsByValue(Long.valueOf(code))) {
+            if (codeRepository.existsByValue(code)) {
                 Employee employee = employeeRepository.findByLogin(auth.getName());
                 if(employee.getIsQREnabled()) {
                     Entrance entrance = new Entrance();
