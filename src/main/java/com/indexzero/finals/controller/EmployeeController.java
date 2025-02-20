@@ -105,4 +105,9 @@ public class EmployeeController {
         return employeeService.getEmployeeByLogin(login);
     }
 
+    @GetMapping("/coffee")
+    public ResponseEntity<HttpStatusCode> coffee() {
+        return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+    }
+
 }
