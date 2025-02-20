@@ -105,9 +105,14 @@ public class EmployeeController {
         return employeeService.getEmployeeByLogin(login);
     }
 
-    @GetMapping("/coffee")
-    public ResponseEntity<HttpStatusCode> coffee() {
-        return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+    @GetMapping("/coffee")@Operation(description = "I Am A Teapot", summary = "I Am A Teapot")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "418", description = "I Am A Teapot"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+    })
+
+    public ResponseEntity<String> coffee() {
+        return new ResponseEntity<>("I Am A Teapot", HttpStatus.I_AM_A_TEAPOT);
     }
 
 }
