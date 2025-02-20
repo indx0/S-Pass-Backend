@@ -61,12 +61,12 @@ class EmployeeControllerTests {
     @Test
     void lockAndUnlockUser() throws Exception {
         this.mockMvc.perform(
-                        patch("/api/employee/ipetrov/blocked")
+                        patch("/api/employee/ipetrov/change_state")
                                 .with(httpBasic("pivanov", "HelloWorld1234")))
                 .andDo(print())
                 .andExpect(status().isOk());
         this.mockMvc.perform(
-                        patch("/api/employee/ipetrov/active")
+                        patch("/api/employee/ipetrov/change_state")
                                 .with(httpBasic("pivanov", "HelloWorld1234")))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -75,12 +75,12 @@ class EmployeeControllerTests {
     @Test
     void lockAndUnlockUserNotFound() throws Exception {
         this.mockMvc.perform(
-                        patch("/api/employee/PetrTestovich/blocked")
+                        patch("/api/employee/PetrTestovich/change_state")
                                 .with(httpBasic("pivanov", "HelloWorld1234")))
                 .andDo(print())
                 .andExpect(status().isNotFound());
         this.mockMvc.perform(
-                        patch("/api/employee/PetrTestovich/active")
+                        patch("/api/employee/PetrTestovich/change_state")
                                 .with(httpBasic("pivanov", "HelloWorld1234")))
                 .andDo(print())
                 .andExpect(status().isNotFound());
